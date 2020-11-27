@@ -53,12 +53,7 @@ const app = Sammy('#root', function() {
                 .get()
                 .then((response) => {
                     const currentPostData = response.data();
-                    console.log(currentPostData);
-                    context.post = {...currentPostData };
-                    extendContext(context)
-                        .then(function() {
-                            this.partial('../templates/details.hbs');
-                        });
+
                 })
         })
         //POST
