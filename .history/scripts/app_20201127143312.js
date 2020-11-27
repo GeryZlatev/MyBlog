@@ -6,21 +6,10 @@ const app = Sammy('#root', function() {
     //GET
 
     this.get('#/home', function(context) {
-        DB.collection('posts')
-            .get()
-            .then((response) => {
-                context.posts = response
-                    .docs
-                    .map((post) => {
-                        return { id: post.id, ...post.data() }
-                    });
-                extendContext(context)
-                    .then(function() {
-                        this.partial('../templates/home.hbs');
-                    });
-            })
-            .catch(errorHandler);
-
+        extendContext(context)
+            .then(function() {
+                this.partial('../templates/home.hbs');
+            });
     });
 
     this.get('#/register', function(context) {
@@ -75,18 +64,8 @@ const app = Sammy('#root', function() {
     });
 
     this.post('#/create-post', function(context) {
-        const { title, category, content } = context.params;
-        DB.collection('posts').add({
-                title,
-                category,
-                content,
-                creator: getUserData().uid,
-            })
-            .then((createdPost) => {
-                console.log(createdPost);
-                this.redirect('#/home');
-            })
-            .catch(errorHandler);
+
+        DB.collection('posts').add()
     })
 
 

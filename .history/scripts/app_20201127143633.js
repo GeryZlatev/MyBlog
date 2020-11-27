@@ -6,21 +6,10 @@ const app = Sammy('#root', function() {
     //GET
 
     this.get('#/home', function(context) {
-        DB.collection('posts')
-            .get()
-            .then((response) => {
-                context.posts = response
-                    .docs
-                    .map((post) => {
-                        return { id: post.id, ...post.data() }
-                    });
-                extendContext(context)
-                    .then(function() {
-                        this.partial('../templates/home.hbs');
-                    });
-            })
-            .catch(errorHandler);
-
+        extendContext(context)
+            .then(function() {
+                this.partial('../templates/home.hbs');
+            });
     });
 
     this.get('#/register', function(context) {
