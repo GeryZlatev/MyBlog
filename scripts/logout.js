@@ -4,7 +4,7 @@ export default function(context) {
     UserModel.signOut()
         .then((response) => {
             clearUserData();
-            let message = 'You are successfully logout! We are looking for to see you again!';
+            let message = 'You are successfully logged out! We are looking for to see you again!';
             notificatin(message);
             this.redirect('#/home');
         })
