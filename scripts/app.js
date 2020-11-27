@@ -7,6 +7,8 @@ import login, { loginUser } from './login.js';
 import logout from './logout.js';
 import register, { registerUser } from './register.js';
 
+
+
 const app = Sammy('#root', function() {
     this.use('Handlebars', 'hbs');
 

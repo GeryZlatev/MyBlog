@@ -1,21 +1,30 @@
 {
-    "name": "my-blog",
-    "version": "1.0.0",
-    "main": "./scripts/app.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "lite-server"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "firebase": "^7.10.0",
-        "handlebars": "^4.7.3",
-        "jquery": "^3.4.1",
-        "lite-server": "2.6.1",
-        "node_module": "0.0.0",
-        "sammy": "^0.7.6"
-    },
-    "keywords": [],
-    "description": ""
+  "name": "my-blog",
+  "version": "1.0.0",
+  "main": "./scripts/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^7.10.0",
+    "handlebars": "^4.7.3",
+    "jquery": "^3.4.1",
+    "lite-server": "2.6.1",
+    "node_module": "0.0.0",
+    "sammy": "^0.7.6"
+  },
+  "keywords": [],
+  "description": "",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeryZlatev/my-blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GeryZlatev/my-blog/issues"
+  },
+  "homepage": "https://github.com/GeryZlatev/my-blog#readme"
 }

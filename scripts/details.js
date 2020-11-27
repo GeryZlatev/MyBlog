@@ -1,4 +1,4 @@
-import { DB, extendContext } from './data.js';
+import { DB, extendContext, errorHandler } from './data.js';
 
 export default function(context) {
     const { postId } = context.params;
@@ -13,4 +13,5 @@ export default function(context) {
                     this.partial('../templates/details.hbs');
                 });
         })
+        .catch(errorHandler);
 }

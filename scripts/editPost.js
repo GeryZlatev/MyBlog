@@ -1,4 +1,4 @@
-import { DB, extendContext, errorHandler } from './data.js';
+import { DB, extendContext, errorHandler, notificatin } from './data.js';
 
 export default function(context) {
     const { postId } = context.params;
@@ -16,7 +16,7 @@ export default function(context) {
 }
 
 export function edit(context) {
-    const { postId, title, category, content } = context.params;
+    const { postId, title, category, content} = context.params;
 
     DB.collection('posts')
         .doc(postId)
@@ -32,6 +32,8 @@ export function edit(context) {
                 })
         })
         .then((response) => {
+            let message = 'You are successfully edited the post!';
+            notificatin(message);
             this.redirect('#/home');
         })
         .catch(errorHandler);

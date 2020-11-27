@@ -1,4 +1,4 @@
-import { extendContext, UserModel, saveUserData, errorHandler } from './data.js';
+import { extendContext, UserModel, saveUserData, errorHandler, notificatin} from './data.js';
 
 export default function(context) {
     extendContext(context)
@@ -12,6 +12,8 @@ export function loginUser(context) {
     UserModel.signInWithEmailAndPassword(email, password)
         .then((userData) => {
             saveUserData(userData);
+            let message = 'You are successfully logged in!';
+            notificatin(message);
             this.redirect('#/home');
         })
         .catch(errorHandler);

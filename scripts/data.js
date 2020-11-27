@@ -1,3 +1,8 @@
+export const domElements = {
+    infoBox: () => document.querySelector("#infoBox"),
+    errorBox: () => document.querySelector("#errorBox"),
+}
+
 export function extendContext(context) {
     const user = getUserData();
     context.isLoggedIn = Boolean(user);
@@ -9,7 +14,23 @@ export function extendContext(context) {
 }
 
 export function errorHandler(error) {
-    alert(error);
+    domElements.errorBox().textContent = error;
+    domElements.errorBox().style.display = "block";
+
+    setTimeout(() => {
+        domElements.errorBox().textContent = "";
+        domElements.errorBox().style.display = "none";
+    }, 4000);
+}
+
+export function notificatin(message) {
+    domElements.infoBox().textContent = message;
+    domElements.infoBox().style.display = "block";
+
+    setTimeout(() => {
+        domElements.infoBox().textContent = "";
+        domElements.infoBox().style.display = "none";
+    }, 4000);
 }
 
 export function saveUserData(data) {

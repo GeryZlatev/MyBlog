@@ -1,4 +1,4 @@
-import { DB, getUserData, errorHandler } from './data.js';
+import { DB, getUserData, errorHandler, notificatin } from './data.js';
 
 export default function(context) {
     const { title, category, content } = context.params;
@@ -9,7 +9,8 @@ export default function(context) {
             creator: getUserData().uid,
         })
         .then((createdPost) => {
-            console.log(createdPost);
+            let message = 'You successfully created a new post';
+            notificatin(message);
             this.redirect('#/home');
         })
         .catch(errorHandler);

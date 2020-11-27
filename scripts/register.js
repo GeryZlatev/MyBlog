@@ -1,4 +1,4 @@
-import { extendContext, UserModel } from './data.js';
+import { extendContext, UserModel, notificatin, errorHandler } from './data.js';
 
 export default function(context) {
     extendContext(context)
@@ -17,6 +17,8 @@ export function registerUser(context) {
     }
     UserModel.createUserWithEmailAndPassword(email, password)
         .then((userData) => {
+            let message = 'You successfully registered. Please log in to continue!';
+            notificatin(message);
             this.redirect('#/login');
         });
 }
