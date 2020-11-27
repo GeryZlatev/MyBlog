@@ -28,12 +28,10 @@ const app = Sammy('#root', function() {
 
     this.get('#/logout', function(context) {
         UserModel.signOut()
-            .then((response) => {
-                clearUserData();
-                this.redirect('#/home');
+            .then(function() {
+                clearUserData()
             })
-            .catch(errorHandler);
-    });
+    })
 
 
     //POST
