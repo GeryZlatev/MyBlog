@@ -73,7 +73,6 @@ const app = Sammy('#root', function() {
                         this.partial('../templates/editPost.hbs');
                     })
             })
-
     });
     //POST
 

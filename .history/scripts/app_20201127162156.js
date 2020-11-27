@@ -62,20 +62,19 @@ const app = Sammy('#root', function() {
     })
 
     this.get('#/edit-post/:postId', function(context) {
-        const { postId } = context.params;
-        DB.collection('posts')
-            .doc(postId)
-            .get()
-            .then((response) => {
-                context.post = { id: postId, ...response.data() }
-                extendContext(context)
-                    .then(function() {
-                        this.partial('../templates/editPost.hbs');
-                    })
-            })
-
-    });
-    //POST
+            const { postId } = context.params;
+            DB.collection('posts')
+                .doc(postId)
+                .get()
+                .then((response) => {
+                    context.post = { id: postId, ...response.data() }
+                    extendContext(context)
+                        .then(function() {
+                            this.partial('../templates/editPost.hbs');
+                        })
+                })
+        })
+        //POST
 
     this.post('#/register', function(context) {
         const { email, password, repeatPassword } = context.params;
@@ -137,7 +136,7 @@ const app = Sammy('#root', function() {
                 this.redirect('#/home');
             })
             .catch(errorHandler);
-    });
+    })
 });
 
 app.run('#/home');

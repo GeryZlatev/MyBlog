@@ -73,7 +73,20 @@ const app = Sammy('#root', function() {
                         this.partial('../templates/editPost.hbs');
                     })
             })
-
+        DB.collection('posts')
+            .get()
+            .then((response) => {
+                context.posts = response
+                    .docs
+                    .map((post) => {
+                        return { id: post.id, ...post.data() }
+                    });
+                extendContext(context)
+                    .then(function() {
+                        this.partial('../templates/home.hbs');
+                    });
+            })
+            .catch(errorHandler);
     });
     //POST
 

@@ -3,16 +3,16 @@
 <section id="home-logged">
     <section class="first-section">
         <section class="background-container">
-            <form action="#/create-post" method="POST">
-                <h1>Create Post</h1>
-                <label for="title">Title</label>
-                <input type="text" name="title">
-                <label for="category">Category</label>
-                <input type="text" name="category">
-                <label for="content">Content</label>
-                <textarea name="content" cols="30" rows="7"></textarea>
-                <button>Submit</button>
-            </form>
+    <form action="#/create-post" method="POST">
+        <h1>Create Post</h1>
+        <label for="title">Title</label>
+        <input type="text" name="title">
+        <label for="category">Category</label>
+        <input type="text" name="category">
+        <label for="content">Content</label>
+        <textarea name="content" cols="30" rows="7"></textarea>
+        <button>Submit</button>
+    </form>
         </section>
     </section>
     <section class="second-section">
@@ -29,7 +29,18 @@
                 <a href="#/edit-post/{{id}}" id="edit-button">Edit</a>
             </article>
             {{/each}}
+                <form action="#/edit-post" method="POST">
+                    <h1>Edit Post</h1>
+                    <label for="title">Title</label>
+                    <input type="text" name="title" value="{{post.title}}">
+                    <label for="category">Category</label>
+                    <input type="text" name="category" value="{{post.category}}">
+                    <label for="content">Content</label>
+                    <textarea name="content" cols="30" rows="7">{{post.content}}</textarea>
+                    <button>Edit</button>
+                </form>
             
+
         </div>
     </section>
 </section>

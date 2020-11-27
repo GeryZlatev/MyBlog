@@ -47,35 +47,20 @@ const app = Sammy('#root', function() {
     });
 
     this.get('#/details/:postId', function(context) {
-        const { postId } = context.params;
-        DB.collection('posts')
-            .doc(postId)
-            .get()
-            .then((response) => {
-                const currentPostData = response.data();
-                context.post = {...currentPostData };
-                extendContext(context)
-                    .then(function() {
-                        this.partial('../templates/details.hbs');
-                    });
-            })
-    })
-
-    this.get('#/edit-post/:postId', function(context) {
-        const { postId } = context.params;
-        DB.collection('posts')
-            .doc(postId)
-            .get()
-            .then((response) => {
-                context.post = { id: postId, ...response.data() }
-                extendContext(context)
-                    .then(function() {
-                        this.partial('../templates/editPost.hbs');
-                    })
-            })
-
-    });
-    //POST
+            const { postId } = context.params;
+            DB.collection('posts')
+                .doc(postId)
+                .get()
+                .then((response) => {
+                    const currentPostData = response.data();
+                    context.post = {...currentPostData };
+                    extendContext(context)
+                        .then(function() {
+                            this.partial('../templates/details.hbs');
+                        });
+                })
+        })
+        //POST
 
     this.post('#/register', function(context) {
         const { email, password, repeatPassword } = context.params;
@@ -117,27 +102,7 @@ const app = Sammy('#root', function() {
             .catch(errorHandler);
     })
 
-    this.post('#/edit-post/:postId', function(context) {
-        const { postId, title, category, content } = context.params;
 
-        DB.collection('posts')
-            .doc(postId)
-            .get()
-            .then((response) => {
-                return DB.collection('posts')
-                    .doc(postId)
-                    .set({
-                        ...response.data(),
-                        title,
-                        category,
-                        content
-                    })
-            })
-            .then((response) => {
-                this.redirect('#/home');
-            })
-            .catch(errorHandler);
-    });
 });
 
 app.run('#/home');
